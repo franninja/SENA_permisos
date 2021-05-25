@@ -4,6 +4,7 @@
 
 @section('content_header')
     <h1>Lista de usuarios</h1>
+    @include('includes.message')
 @stop
 
 @section('content')
@@ -12,14 +13,16 @@
       <thead class="thead-dark">
         <tr>
           <th>nombre(rol)</th>
+          <th>documento</th>
           <th>correo</th>
           <th>registrado el</th>
-          <th>Acciones</th>
+          <th colspan="2">Acciones</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($users as $user)
           <tr>
+            
             <td>
               {{$user->name}}
               {{-- rol en caso de que exista --}}
@@ -27,13 +30,26 @@
                ( {{ $user->roles()->first()->name }})
               @endif
             </td>
+            
+            <td>
+              {{$user->n_documento}}
+            </td>
+
             <td>{{$user->email}}</td>
             <td>{{$user->created_at}}</td>
             <td style="width: 2rem;">
-                <a class="btn btn-warning" href="{{ route('user.role', $user->id) }}">Gestionar Rol</a>
-                <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Editar</a>
-                <a class="btn btn-danger" href="">Eliminar</a>
+              <a class="btn btn-warning" href="{{ route('user.role', $user->id) }}">Gestionar Rol</a>
             </td>
+            <td style="width: 2rem;">
+                <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Editar</a>
+            </td>
+            {{-- <td style="width: 2rem;">
+              <form method="POST" action="{{ route('user.destroy', $user) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" >Eliminar</button>
+              </form>
+            </td> --}}
           </tr>
         @endforeach
         

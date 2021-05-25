@@ -1,3 +1,22 @@
+@guest
+<div class="input-group mb-3">
+    <input id="n_documento" type="number" placeholder="Numero documento" class="form-control @error('n_documento') is-invalid @enderror"
+        name="n_documento" value="{{ old('n_documento', $user->n_documento ) }}"  autocomplete="n_documento" autofocus>
+    <div class="input-group-append">
+        <div class="input-group-text">
+            <span class="fas fa-user"></span>
+        </div>
+    </div>
+
+    @error('n_documento')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+
+</div>
+@endguest
+
 @auth
 <label for="name">nombre</label>
 @endauth
