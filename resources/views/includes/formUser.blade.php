@@ -1,3 +1,7 @@
+@if (!isset($user))
+    @inject('user', 'App\User')
+    {{-- @php($user = new User) --}}
+@endif
 @guest
 <div class="input-group mb-3">
     <input id="n_documento" type="number" placeholder="Numero documento" class="form-control @error('n_documento') is-invalid @enderror"
