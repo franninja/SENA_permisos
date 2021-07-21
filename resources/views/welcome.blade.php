@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon"  type="img/.png" href="{{ asset('img/logo.png') }}">
 
-        <title>SENA permisos</title>
+        <title>Plataforma CrowdSourcing</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -38,8 +38,8 @@
             <div class="contenedor">
                 <div class="home">
                     <div class="title ">
-                        SENA PERMISOS <br>
-                        <span> gestiona la entradas de personal autorizado</span>
+                        PLATAFORMA CROWDSOURCING <br>
+                        <span> gestion  de procesos de innovacion abierta</span>
                     </div>
 
                     <div class=" home_links ">
@@ -52,7 +52,7 @@
             </div>
             <footer>
                 <div class="home_footer">
-                    <p> Desarrollado por Desarollando Semileros &copy; <?php echo date('Y'); ?></p>
+                    <p> Todos los Derechos Reservados plat. CrowdSourcing &copy; <?php echo date('Y'); ?></p>
                     
                 </div>
             </footer>        

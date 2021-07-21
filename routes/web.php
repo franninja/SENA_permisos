@@ -30,6 +30,9 @@ Route::get('user/{user}/role', 'UserController@role')->middleware('can:user.role
 Route::patch('user/saverole', 'UserController@saveRole')->middleware('can:user.saverole')->name('user.saverole');
 Route::resource('user', 'UserController')->except(['store', 'create']);
 
-// tutas roles
+// rutas roles
 Route::resource('roles', 'RoleController');
+
+// rutas desafios o Challenges
+Route::resource('challenge','ChallengeController');
 

@@ -19,4 +19,4 @@ use App\Http\Controllers\RespuestaController;
 //     return $request->user();
 // });
 
-Route::post('/respuestas', 'RespuestaController@save');
+// Route::post('/respuestas', 'RespuestaController@save');

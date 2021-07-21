@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '| SENA permisos',
+    'title_postfix' => '| plataforma CrowdSourcing',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>SENA</b>Permisos',
+    'logo' => '<b>PLAT.</b>CrowdSourcing',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'SENA Permisos',
+    'logo_img_alt' => 'PLAT. CrowdSourcing',
 
     /*
     |--------------------------------------------------------------------------
@@ -311,6 +311,19 @@ return [
             'route'  => 'roles.create',
             'icon' => 'fas fa-plus',
             'can' => 'roles.index',
+        ],
+        ['header' => 'DESAFIOS'],
+        [
+            'text' => 'Lista de Desafios',
+            'route'  => 'challenge.index',
+            'icon' => 'fas fa-dumbbell',
+            // 'can' => 'roles.index',
+        ],
+        [
+            'text' => 'Crear Nuevo Desafio',
+            'route'  => 'challenge.create',
+            'icon' => 'fas fa-plus',
+            // 'can' => 'roles.index',
         ],
         // [
         //     'text' => 'change_password',
