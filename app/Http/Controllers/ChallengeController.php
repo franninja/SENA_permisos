@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Challenge;
+use Spatie\Permission\Models\Role;
 
 class ChallengeController extends Controller
 {
@@ -24,7 +25,11 @@ class ChallengeController extends Controller
      */
     public function create()
     {
-        return view('challenge.create', ['challenge' => new Challenge]);
+        $roles = Role::All();
+        return view('challenge.create', [
+            'challenge' => new Challenge,
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -35,7 +40,13 @@ class ChallengeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo('<pre>');
+            dump($request);
+        echo('</pre>');
+        die();
+
+        // return redirect()->route('challenge.create');
+        
     }
 
     /**
