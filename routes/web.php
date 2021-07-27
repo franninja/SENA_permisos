@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//rutas para login de redes sociales
 Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
