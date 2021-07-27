@@ -325,6 +325,21 @@ return [
             'icon' => 'fas fa-plus',
             // 'can' => 'roles.index',
         ],
+
+        ['header' => 'IDEAS'],
+
+        [
+            'text' => 'Crear Nueva Idea',
+            'url'  => '#',
+            'icon' => 'fas fa-plus',
+            // 'can' => 'roles.index',
+        ],
+        [
+            'text' => 'Ideas Creadas',
+            'url'  => '#',
+            'icon' => 'fas fa-dumbbell',
+            // 'can' => 'roles.index',
+        ],
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',
