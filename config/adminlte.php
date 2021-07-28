@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>PLAT.</b>CrowdSourcing',
-    'logo_img' => 'vendor/adminlte/dist/img/SenaLogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/LogoSena.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -121,14 +121,14 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'bg-white',
+    'classes_brand' => 'bg-dark',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -337,7 +337,13 @@ return [
         [
             'text' => 'Ideas Creadas',
             'url'  => '#',
+<<<<<<< Updated upstream
             'icon' => 'far fa-lightbulb',
+=======
+            // 'icon' => 'fas fa-dumbbell',
+            'icon' => 'far fa-lightbulb',
+
+>>>>>>> Stashed changes
             // 'can' => 'roles.index',
         ],
         // [
