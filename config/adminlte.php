@@ -337,7 +337,7 @@ return [
         [
             'text' => 'Ideas Creadas',
             'url'  => '#',
-            'icon' => 'fas fa-dumbbell',
+            'icon' => 'far fa-lightbulb',
             // 'can' => 'roles.index',
         ],
         // [
