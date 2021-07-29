@@ -337,13 +337,8 @@ return [
         [
             'text' => 'Ideas Creadas',
             'url'  => '#',
-<<<<<<< Updated upstream
             'icon' => 'far fa-lightbulb',
-=======
-            // 'icon' => 'fas fa-dumbbell',
-            'icon' => 'far fa-lightbulb',
-
->>>>>>> Stashed changes
+            'icon_color' => 'warning',
             // 'can' => 'roles.index',
         ],
         // [
