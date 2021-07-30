@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '| plataforma CrowdSourcing',
+    'title_postfix' => '| Plataforma CrowdSourcing',
 
     /*
     |--------------------------------------------------------------------------
@@ -337,8 +337,15 @@ return [
         [
             'text' => 'Ideas Creadas',
             'url'  => '#',
+<<<<<<< Updated upstream
             'icon' => 'far fa-lightbulb',
             'icon_color' => 'warning',
+=======
+            // 'icon' => 'fas fa-dumbbell',
+            'icon' => 'far fa-lightbulb',
+            'icon_color' => 'warning'
+
+>>>>>>> Stashed changes
             // 'can' => 'roles.index',
         ],
         // [
