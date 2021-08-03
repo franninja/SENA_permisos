@@ -330,22 +330,15 @@ return [
 
         [
             'text' => 'Crear Nueva Idea',
-            'url'  => '#',
+            'route'  => 'idea.create',
             'icon' => 'fas fa-plus',
             // 'can' => 'roles.index',
         ],
         [
             'text' => 'Ideas Creadas',
             'url'  => '#',
-<<<<<<< Updated upstream
             'icon' => 'far fa-lightbulb',
             'icon_color' => 'warning',
-=======
-            // 'icon' => 'fas fa-dumbbell',
-            'icon' => 'far fa-lightbulb',
-            'icon_color' => 'warning'
-
->>>>>>> Stashed changes
             // 'can' => 'roles.index',
         ],
         // [
