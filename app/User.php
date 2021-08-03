@@ -82,4 +82,9 @@ class User extends Authenticatable
     //     Return $this->
     // }
 
+    // uno a muchos 
+    public function challenges(){
+        return $this->hasMany('App\Challenge');
+    }
+
 }
