@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '| plataforma CrowdSourcing',
+    'title_postfix' => '| Plataforma CrowdSourcing',
 
     /*
     |--------------------------------------------------------------------------
@@ -330,7 +330,7 @@ return [
 
         [
             'text' => 'Crear Nueva Idea',
-            'url'  => '#',
+            'route'  => 'idea.create',
             'icon' => 'fas fa-plus',
             // 'can' => 'roles.index',
         ],
