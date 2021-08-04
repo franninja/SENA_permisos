@@ -14,9 +14,6 @@ use Spatie\Permission\Models\Role;
 class ChallengeController extends Controller
 {
 
-    public function Role($id){
-        return Role::find($id);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +21,13 @@ class ChallengeController extends Controller
      */
     public function index()
     {
+        // sacar los roles
+        $roles = Role::all();
+        // sacar los desafios
         $challenges = Challenge::all();
         return view("challenge.index", [
-            "challenges" => $challenges
+            "challenges" => $challenges,
+            "roles" => $roles
         ]);
     }
 

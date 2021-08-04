@@ -28,7 +28,11 @@
               <td>{{ $challenge->id }}</td>
               <td>{{$challenge->name}}</td>
               <td>
-                @dump($challenge->role($challenge->privacity)->name)
+                @foreach ($roles as $role)
+                  @if ($role->id == $challenge->privacity)
+                    {{ $role->name}}
+                  @endif
+                @endforeach
               </td>
               <td>{{$challenge->description}}</td>
               <td>{{$challenge->status}}</td>
