@@ -40,3 +40,6 @@ Route::resource('challenge','ChallengeController');
 // rutas Idea
 Route::resource('idea','IdeaController');
 
+
+
+

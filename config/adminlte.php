@@ -335,6 +335,12 @@ return [
             // 'can' => 'roles.index',
         ],
         [
+            'text' => 'Crear Nuevo Desafio',
+            'route'  => 'idea.create',
+            'icon' => 'fas fa-plus',
+            // 'can' => 'roles.index',
+        ],
+        [
             'text' => 'Ideas Creadas',
             'url'  => '#',
             'icon' => 'far fa-lightbulb',
