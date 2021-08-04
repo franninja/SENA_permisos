@@ -46,17 +46,17 @@
         </div>
 
 
-        <!-- <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
             <label for="status">Estado del Desafio</label>
             <div class="custom-control custom-radio">
-                <input class="custom-control-input" type="radio" value="activo" id="status" name="status" >
+                <input class="custom-control-input" type="radio" value="activo" id="status" name="status" checked>
                 <label for="customRadio1" class="custom-control-label">Activo</label>
             </div>
-            <div class="custom-control custom-radio">
+            {{-- <div class="custom-control custom-radio">
                 <input class="custom-control-input" type="radio" value="inactivo" id="status" name="status" >
                 <label for="customRadio2" class="custom-control-label">inactivo</label>
-            </div>
-        </div> -->
+            </div> --}}
+        </div>
     </div>
     
     <div class="row" style="clear: both;margin-top: 18px;">

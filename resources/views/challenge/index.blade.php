@@ -3,8 +3,8 @@
 @section('title', 'desafios')
 
 @section('content_header')
-    <a href="{{ route('roles.create') }}" class="btn btn-secondary btn-sm float-right">Crear Role</a>
-    <h1>Lista de Roles</h1>
+    <a href="{{ route('challenge.create') }}" class="btn btn-secondary btn-sm float-right">Crear challenge</a>
+    <h1>Lista de challenges</h1>
     @include('includes.message')
 @stop
 
@@ -15,21 +15,29 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Privacidad</th>
+            <th>Descripcion</th>
+            <th>estado</th>
             <th>Creado el</th>
             <th colspan="2">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($roles as $role)
+        @foreach ($challenges as $challenge)
           <tr>
-              <td>{{ $role->id }}</td>
-              <td>{{$role->name}}</td>
-              <td>{{$role->created_at}}</td>
+              <td>{{ $challenge->id }}</td>
+              <td>{{$challenge->name}}</td>
+              <td>
+                @dump($challenge->role($challenge->privacity)->name)
+              </td>
+              <td>{{$challenge->description}}</td>
+              <td>{{$challenge->status}}</td>
+              <td>{{$challenge->created_at}}</td>
               <td style="width: 2rem;">
-                  <a class="btn btn-primary" href="{{ route('roles.edit', $role) }}">Editar</a>
+                  <a class="btn btn-primary" href="{{ route('challenge.edit', $challenge) }}">Editar</a>
               </td>
               <td style="width: 2rem;">
-                  <form method="POST" action="{{ route('roles.destroy', $role) }}">
+                  <form method="POST" action="{{ route('challenge.destroy', $challenge) }}">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger" >Eliminar</button>

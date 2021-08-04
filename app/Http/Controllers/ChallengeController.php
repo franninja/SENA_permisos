@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Challenge;
+use App\Upload;
 use Spatie\Permission\Models\Role;
 
 class ChallengeController extends Controller
 {
+
+    public function Role($id){
+        return Role::find($id);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,10 @@ class ChallengeController extends Controller
      */
     public function index()
     {
-        
+        $challenges = Challenge::all();
+        return view("challenge.index", [
+            "challenges" => $challenges
+        ]);
     }
 
     /**
@@ -40,10 +52,58 @@ class ChallengeController extends Controller
      */
     public function store(Request $request)
     {
-        echo('<pre>');
-            dump($request);
-        echo('</pre>');
-        die();
+        $user = auth()->user();
+        $id = $user->id;
+        
+        $validate = $this->validate($request, [
+            "name" => ["required", "string", "max:255"],
+            "privacity" => ["required", "string"],
+            "description" => ["required"],
+            "status" => ["string"],
+        ]);
+
+
+        $files = $request->file('file');
+
+        $name = $request->input("name");
+        $privacity = $request->input("privacity");
+        $description = $request->input("description");
+        $status = $request->input("status");
+
+        $challenge = new Challenge();
+        $challenge->user_id = $id;
+        $challenge->name = $name;
+        $challenge->privacity = $privacity;
+        $challenge->description = $description;
+        $challenge->status = $status;
+
+        $challenge->save();
+
+        
+        if($files){
+
+            foreach($files as $file){
+                //poner un nombre unico a la imagen subida
+                $image_path_name = time().$file->getClientOriginalName();
+                //guardarlo en el disco de imagenes
+                Storage::disk('challenges')->put($image_path_name, File::get($file));
+                //seterar el image_path el nombre unico
+
+                // para el tema de los uploads
+                $uploads = new Upload(["path" => $image_path_name]);
+                $challenge->uploads()->save($uploads);
+                // $challenge->uploads()->save();
+            }
+        }
+
+
+
+        return true;
+
+        // echo('<pre>');
+        //     dump($files);
+        // echo('</pre>');
+        // die();
 
         // return redirect()->route('challenge.create');
         
