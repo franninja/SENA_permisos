@@ -19,7 +19,7 @@ class CreateChallengesTable extends Migration
         // });
 
         DB::statement("
-            create table Challenges(
+            create table challenges(
                 id bigint(20) primary key auto_increment not null,
                 user_id bigint(20) unsigned not null,
                 name varchar(255) not null,
