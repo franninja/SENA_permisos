@@ -14,6 +14,10 @@ use Spatie\Permission\Models\Role;
 class ChallengeController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

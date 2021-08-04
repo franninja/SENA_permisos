@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //mostrar la vista
     public function create(){
         return View('idea.create');

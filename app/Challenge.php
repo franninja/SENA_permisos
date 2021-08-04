@@ -21,7 +21,8 @@ class Challenge extends Model
         return $this->morphMany('App\Upload', 'uploadable');
     }
 
-    // public function roles1(){
-    //     return $this->hasOne(Role::class, "privacity");
-    // }
+    //muchos a uno
+    public function area(){
+    	return $this->belongsTo('App\Area', 'area_id');
+    }
 }

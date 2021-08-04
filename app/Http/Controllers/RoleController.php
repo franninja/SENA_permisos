@@ -8,6 +8,11 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:roles.index');
+    }
     /**
      * Display a listing of the resource.
      *
