@@ -43,3 +43,6 @@ Route::resource('area','AreasController');
 // rutas Idea
 Route::resource('idea','IdeaController');
 
+
+
+
