@@ -1,11 +1,12 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Eloquent\Model;
 
 // permisos y roles
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
-use Illuminate\Database\Eloquent\Model;
+
 
 class Challenge extends Model
 {

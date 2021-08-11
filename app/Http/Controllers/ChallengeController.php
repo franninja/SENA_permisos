@@ -25,8 +25,10 @@ class ChallengeController extends Controller
     public function index()
     {
         $challenges = Challenge::all();
+        $roles = Role::all();
         return view("challenge.index", [
-            "challenges" => $challenges
+            "challenges" => $challenges,
+            "roles" => $roles
         ]);
     }
 

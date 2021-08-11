@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'desafios')
+@section('title', 'Desafios')
 
 @section('content_header')
-    <a href="{{ route('challenge.create') }}" class="btn btn-secondary btn-sm float-right">Crear challenge</a>
-    <h1>Lista de challenges</h1>
+    <a href="{{ route('challenge.create') }}" class="btn btn-secondary btn-sm float-right">Crear Desafio</a>
+    <h1>Lista de Desafios</h1>
     @include('includes.message')
 @stop
 
@@ -28,7 +28,9 @@
               <td>{{ $challenge->id }}</td>
               <td>{{$challenge->name}}</td>
               <td>
-                @dump($challenge->role($challenge->privacity)->name)
+                @if (in_array($challenge->privacity, $roles->id))
+                  {{  }}
+                @endif
               </td>
               <td>{{$challenge->description}}</td>
               <td>{{$challenge->status}}</td>
