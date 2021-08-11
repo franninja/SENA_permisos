@@ -14,8 +14,9 @@ use Spatie\Permission\Models\Role;
 class ChallengeController extends Controller
 {
 
-    public function Role($id){
-        return Role::find($id);
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -24,6 +25,9 @@ class ChallengeController extends Controller
      */
     public function index()
     {
+        // sacar los roles
+        $roles = Role::all();
+        // sacar los desafios
         $challenges = Challenge::all();
         $roles = Role::all();
         return view("challenge.index", [

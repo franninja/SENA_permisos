@@ -297,6 +297,21 @@ return [
             'icon' => 'fas fa-fw fa-users',
             'can' => 'user.index',
         ],
+        ['header' => 'AREAS',
+        //  'can' => 'roles.index'
+        ],
+        [
+            'text' => 'Lista de Areas',
+            'route'  => 'area.index',
+            'icon' => 'fas fa-fw fa-users-cog',
+            // 'can' => 'roles.index',
+        ],
+        [
+            'text' => 'Crear Nueva Area',
+            'route'  => 'area.create',
+            'icon' => 'fas fa-plus',
+            // 'can' => 'roles.index',
+        ],
         ['header' => 'ROLES Y PERMISOS',
          'can' => 'roles.index'
         ],
@@ -330,6 +345,12 @@ return [
 
         [
             'text' => 'Crear Nueva Idea',
+            'route'  => 'idea.create',
+            'icon' => 'fas fa-plus',
+            // 'can' => 'roles.index',
+        ],
+        [
+            'text' => 'Crear Nuevo Desafio',
             'route'  => 'idea.create',
             'icon' => 'fas fa-plus',
             // 'can' => 'roles.index',

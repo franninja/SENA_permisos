@@ -28,9 +28,11 @@
               <td>{{ $challenge->id }}</td>
               <td>{{$challenge->name}}</td>
               <td>
-                @if (in_array($challenge->privacity, $roles->id))
-                  {{  }}
-                @endif
+                @foreach ($roles as $role)
+                  @if ($role->id == $challenge->privacity)
+                    {{ $role->name}}
+                  @endif
+                @endforeach
               </td>
               <td>{{$challenge->description}}</td>
               <td>{{$challenge->status}}</td>

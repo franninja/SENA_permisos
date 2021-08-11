@@ -37,6 +37,12 @@ Route::resource('roles', 'RoleController');
 // rutas desafios o Challenges
 Route::resource('challenge','ChallengeController');
 
+// rutas areas para los desafios
+Route::resource('area','AreasController');
+
 // rutas Idea
 Route::resource('idea','IdeaController');
+
+
+
 
