@@ -28,7 +28,7 @@
               <td>{{ $challenge->id }}</td>
               <td>{{$challenge->name}}</td>
               <td>{{$challenge->area->name}}</td>
-              <td>{{$challenge->description}}</td>
+              <td>{{ substr($challenge->description, 0, 54)}}</td>
               <td>{{$challenge->status}}</td>
               <td>{{$challenge->created_at}}</td>
               <td style="width: 2rem;">
