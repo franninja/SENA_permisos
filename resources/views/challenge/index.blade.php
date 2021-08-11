@@ -27,13 +27,7 @@
           <tr>
               <td>{{ $challenge->id }}</td>
               <td>{{$challenge->name}}</td>
-              <td>
-                @foreach ($roles as $role)
-                  @if ($role->id == $challenge->privacity)
-                    {{ $role->name}}
-                  @endif
-                @endforeach
-              </td>
+              <td>{{$challenge->area->name}}</td>
               <td>{{$challenge->description}}</td>
               <td>{{$challenge->status}}</td>
               <td>{{$challenge->created_at}}</td>

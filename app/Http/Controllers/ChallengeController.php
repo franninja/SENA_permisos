@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Challenge;
 use App\Upload;
-use Spatie\Permission\Models\Role;
+use App\Area;
 
 class ChallengeController extends Controller
 {
@@ -25,14 +25,11 @@ class ChallengeController extends Controller
      */
     public function index()
     {
-        // sacar los roles
-        $roles = Role::all();
         // sacar los desafios
         $challenges = Challenge::all();
-        $roles = Role::all();
+        // $areas = Area::all();
         return view("challenge.index", [
-            "challenges" => $challenges,
-            "roles" => $roles
+            "challenges" => $challenges
         ]);
     }
 
@@ -43,10 +40,10 @@ class ChallengeController extends Controller
      */
     public function create()
     {
-        $roles = Role::All();
+        $areas = Area::All();
         return view('challenge.create', [
             'challenge' => new Challenge,
-            'roles' => $roles
+            'areas' => $areas
         ]);
     }
 
@@ -77,9 +74,9 @@ class ChallengeController extends Controller
         $status = $request->input("status");
 
         $challenge = new Challenge();
+        $challenge->area_id = $privacity;
         $challenge->user_id = $id;
         $challenge->name = $name;
-        $challenge->privacity = $privacity;
         $challenge->description = $description;
         $challenge->status = $status;
 

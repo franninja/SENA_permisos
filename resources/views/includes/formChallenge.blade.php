@@ -17,12 +17,12 @@
         
         <div class="col-md-6">
             <div class="form-group">
-                <label for="privacity">privacidad</label>
+                <label for="privacity">Area</label>
                 <select class="custom-select rounded-0" name="privacity" id="privacity">
                     <option >--Seleccionar--</option>
                     <option value="all" >Todos</option>
-                    @foreach ($roles as $role)
-                        <option value="{{$role->id}}" >{{ $role->name }}</option>
+                    @foreach ($areas as $area)
+                        <option value="{{$area->id}}" >{{ $area->name . "-" . $area->description }}</option>
                     @endforeach
                 </select>
             </div>

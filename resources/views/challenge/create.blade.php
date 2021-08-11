@@ -66,7 +66,7 @@
                 });
 
                 this.on('complete',function(){
-                    window.location.href = url+"challenge/index";
+                    window.location.href = "{{route('challenge.index')}}";
                 });
             }
         };
