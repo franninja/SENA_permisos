@@ -40,8 +40,8 @@
             url: "{{ route('challenge.store') }}",
             autoProcessQueue: false,
             uploadMultiple: true,
-            parallelUploads: 3,
-            maxFiles: 3,
+            parallelUploads: 4,
+            maxFiles: 4,
             maxFileSize: 2,
             acceptedFiles: "image/*,.pdf",
             headers: {

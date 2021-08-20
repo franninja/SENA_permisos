@@ -22,7 +22,7 @@
                     <option >--Seleccionar--</option>
                     <option value="all" >Todos</option>
                     @foreach ($areas as $area)
-                        <option value="{{$area->id}}" >{{ $area->name . "-" . $area->description }}</option>
+                        <option {{ $area->id == $challenge->area_id ? 'selected' : '' }} value="{{$area->id}}" >{{ $area->name . "-" . $area->description }}</option>
                     @endforeach
                 </select>
             </div>
@@ -35,7 +35,7 @@
         <div class="form-group col-md-6">
             <label for="description">Descripcion</label>
             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{ old('description', $challenge->description ) }}"  autocomplete="description" autofocus>
-
+                {{ old('description', $challenge->description ) }}
             </textarea>
 
                 @error('description')
@@ -60,6 +60,9 @@
     </div>
     
     <div class="row" style="clear: both;margin-top: 18px;">
+        <label for="">*Nota: maximo puedes subir 4 archivos, 3 para material de apoyo y 1 para añadir preguntas que quieras añadir*</label>
+         <br/>
+         <p>-puedes subir {{ $uploads ? 4 - count($uploads)  : '4' }}-</p>
         <div class="col-12">
           <div class="dropzone" id="myDropzone"></div>
         </div>

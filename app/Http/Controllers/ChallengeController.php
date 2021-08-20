@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Challenge;
 use App\Upload;
 use App\Area;
+use Psy\VarDumper\Dumper;
 
 class ChallengeController extends Controller
 {
@@ -131,7 +132,16 @@ class ChallengeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $challenge = Challenge::find($id);
+        dump($challenge->uploads);
+        die();
+        $areas = Area::all();
+        $uploads = Upload::where('uploadable_id', $id)->get();
+        return view('challenge.edit', [
+            'challenge' => $challenge,
+            'areas' => $areas,
+            'uploads' => $uploads,
+        ]);
     }
 
     /**
