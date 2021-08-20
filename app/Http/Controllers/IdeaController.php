@@ -17,7 +17,12 @@ class IdeaController extends Controller
 
     // }
     public function create(){
-        return View('idea.prueba');
+        return View('idea.create');
 
+    }
+     
+    public function index(Type $var = null)
+    {
+        return View('idea.index');
     }
 }

@@ -350,8 +350,8 @@ return [
             // 'can' => 'roles.index',
         ],
         [
-            'text' => 'Crear Nuevo Desafio',
-            'route'  => 'idea.create',
+            'text' => 'prueba de vista de desafios',
+            'route'  => 'idea.index',
             'icon' => 'fas fa-plus',
             // 'can' => 'roles.index',
         ],
