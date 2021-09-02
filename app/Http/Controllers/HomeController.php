@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -29,5 +31,11 @@ class HomeController extends Controller
         return view('home', [
             'users' => $users
         ]);
+    }
+
+    public function getFile($disk, $filename){
+        $file = Storage::disk($disk)->get($filename);
+
+        return new Response($file, 200);
     }
 }

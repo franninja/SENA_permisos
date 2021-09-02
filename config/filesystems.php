@@ -54,9 +54,9 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
-        'challenges' => [
+        'challenge' => [
             'driver' => 'local',
-            'root' => storage_path('app/challenges'),
+            'root' => storage_path('app/challenge'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

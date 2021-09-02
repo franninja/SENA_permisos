@@ -60,12 +60,18 @@
     </div>
     
     <div class="row" style="clear: both;margin-top: 18px;">
-        <label for="">*Nota: maximo puedes subir 4 archivos, 3 para material de apoyo y 1 para añadir preguntas que quieras añadir*</label>
+        @include('includes.showUploads', ['model' => $challenge, 'disk' => 'challenge'])
+        <label for="">*Nota: maximo puedes subir 4 archivos, 3 para material de apoyo y 1 para añadir preguntas que quieras adicionar*</label>
          <br/>
-         <p>-puedes subir {{ $uploads ? 4 - count($uploads)  : '4' }}-</p>
+         @if (isset($uploads))
+            <p>-puedes subir {{ $uploads ? 4 - count($uploads)  : '4' }}-</p>
+         @else
+             <p>puedes subir 4 archivos</p>
+         @endif
         <div class="col-12">
           <div class="dropzone" id="myDropzone"></div>
         </div>
     </div>
 
 </div>
+

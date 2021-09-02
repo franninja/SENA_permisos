@@ -44,7 +44,7 @@ class ChallengeController extends Controller
         $areas = Area::All();
         return view('challenge.create', [
             'challenge' => new Challenge,
-            'areas' => $areas
+            'areas' => $areas,
         ]);
     }
 
@@ -90,7 +90,7 @@ class ChallengeController extends Controller
                 //poner un nombre unico a la imagen subida
                 $image_path_name = time().$file->getClientOriginalName();
                 //guardarlo en el disco de imagenes
-                Storage::disk('challenges')->put($image_path_name, File::get($file));
+                Storage::disk('challenge')->put($image_path_name, File::get($file));
                 //seterar el image_path el nombre unico
 
                 // para el tema de los uploads
@@ -133,8 +133,8 @@ class ChallengeController extends Controller
     public function edit($id)
     {
         $challenge = Challenge::find($id);
-        dump($challenge->uploads);
-        die();
+        // dump($challenge->uploads);
+        // die();
         $areas = Area::all();
         $uploads = Upload::where('uploadable_id', $id)->get();
         return view('challenge.edit', [
@@ -166,4 +166,6 @@ class ChallengeController extends Controller
     {
         //
     }
+
+    
 }

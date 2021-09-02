@@ -24,6 +24,8 @@ Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
 // home controller - dashboard
+// para obtener los uploads de cualquier modelo
+Route::get('/home/file/{disk}/{filename}', 'HomeController@getFile')->name('home.file');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // rutas usuarios

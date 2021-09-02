@@ -32,7 +32,7 @@
 @stop
 
 @section('js')
-    <script src="../js/dropzone.js"></script>
+<script src="{{ asset('js/dropzone.js') }}"></script>
     <script>
         // var url = 'http://localhost/SENA_permisos/public/';
         var url = 'http://localhost:8081/adsi/plataforma/public/';
