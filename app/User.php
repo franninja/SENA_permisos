@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'n_documento','name', 'email', 'password',
+        'n_documento', 'area_id','name', 'email', 'password',
     ];
 
     /**
@@ -77,10 +77,9 @@ class User extends Authenticatable
         return $this->hasMany('App\SocialProfile');
     }
 
-    // muchos a muchos
-    // public function Roles(){
-    //     Return $this->
-    // }
+    public function area(){
+        return $this->belongsTo('App\Area', 'area_id');
+    }
 
     // uno a muchos 
     public function challenges(){

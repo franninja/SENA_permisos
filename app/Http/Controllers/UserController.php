@@ -89,11 +89,15 @@ class UserController extends Controller
         $user = User::find($id);
 
         $validate = $this->validate($request,[
+            'n_documento' => ['required', 'integer','unique:users'],
             'name' => ['required', 'string', 'max:180'],
-            'email' => ['required', 'string', 'string:180']
+            'email' => ['required', 'string', 'string:180'],
+            'area_id' => ['integer'],
         ]);
 
+        $n_documento = $request->input('n_documento');
         $name = $request->input('name');
+        $area_id = $request->input('area_id');
         $email = $request->input('email');
         
         if($request->input('password')){
@@ -107,6 +111,8 @@ class UserController extends Controller
         }
 
         $user->name = $name;
+        $user->n_documento = $n_documento;
+        $user->area_id = $area_id;
         $user->email = $email;
 
         $user->update();
