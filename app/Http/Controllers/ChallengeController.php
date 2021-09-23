@@ -103,14 +103,6 @@ class ChallengeController extends Controller
 
 
         return true;
-
-        // echo('<pre>');
-        //     dump($files);
-        // echo('</pre>');
-        // die();
-
-        // return redirect()->route('challenge.create');
-        
     }
 
     /**
@@ -144,16 +136,57 @@ class ChallengeController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request, [
+            "name" => ["required", "string", "max:255"],
+            "privacity" => ["required", "string"],
+            "description" => ["required"],
+            "status" => ["string"],
+        ]);
+
+
+        $files = $request->file('file');
+
+        $challenge = Challenge::find($id);
+        $challenge->name = $request->input("name");
+        $challenge->area_id = $request->input("privacity");
+        $challenge->description = $request->input("description");
+        $challenge->status = $request->input("status");
+
+        $challenge->update();
+
+        
+        if($files){
+
+            foreach($files as $file){
+                //poner un nombre unico a la imagen subida
+                $image_path_name = time().$file->getClientOriginalName();
+                //guardarlo en el disco de imagenes
+                Storage::disk('challenge')->put($image_path_name, File::get($file));
+                //seterar el image_path el nombre unico
+
+                // para el tema de los uploads
+                $uploads = new Upload(["path" => $image_path_name]);
+                $challenge->uploads()->save($uploads);
+                // $challenge->uploads()->save();
+            }
+        }
+
+
+
+        return true;
+    }
+
+    public function changteStatus($id){
+        $challenge = Challenge::find($id);
+        if($challenge->status == 'activo'){
+            $challenge->status = 'inactivo';
+        }else{
+            $challenge->status = 'activo';
+        }
+        $challenge->update();
+        return redirect()->route('challenge.index');
     }
 
     /**
@@ -164,7 +197,22 @@ class ChallengeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $challenge = Challenge::find($id);
+
+        $uploads = $challenge->uploads;
+
+        foreach($uploads as $upload){
+            // eliminar del storage
+            Storage::disk('challenge')->delete($upload->path);
+            // eliminar de la db
+            $upload->delete();
+        }
+
+        $challenge->delete();
+
+        return redirect()->route("challenge.index")->with([
+    		'message' => 'Desafio eliminado correctamente'
+    	]);
     }
 
     

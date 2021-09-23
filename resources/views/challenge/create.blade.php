@@ -14,7 +14,6 @@
         </div>
 
         <form method="POST" action="{{ route('challenge.store') }}" enctype="multipart/form-data">
-
             @include('includes.formChallenge')
 
             
@@ -43,7 +42,7 @@
             parallelUploads: 4,
             maxFiles: 4,
             maxFileSize: 2,
-            acceptedFiles: "image/*,.pdf",
+            acceptedFiles: "image/*,.pdf,.doc,.ppt,.docx,.txt",
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
