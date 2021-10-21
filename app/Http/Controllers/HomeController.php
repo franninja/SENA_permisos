@@ -33,9 +33,5 @@ class HomeController extends Controller
         ]);
     }
 
-    public function getFile($disk, $filename){
-        $file = Storage::disk($disk)->get($filename);
-
-        return new Response($file, 200);
-    }
+    
 }

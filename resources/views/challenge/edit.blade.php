@@ -14,7 +14,7 @@
         </div>
 
         <form method="POST" action="{{ route('challenge.update', $challenge->id) }}" enctype="multipart/form-data">
-
+            {{-- @method('PATCH') --}}
             @include('includes.formChallenge')
 
             
@@ -38,12 +38,13 @@
         var url = 'http://localhost:8081/adsi/plataforma/public/';
         Dropzone.options.myDropzone = {
             url: "{{ route('challenge.update', $challenge->id) }}",
+            // method: "PATCH",
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 4,
             maxFiles: {{ 4 - count($uploads) }},
             maxFileSize: 2,
-            acceptedFiles: "image/*,.pdf",
+            acceptedFiles: "image/*,.pdf,.doc,.ppt,.docx,.txt",
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

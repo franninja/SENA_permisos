@@ -20,7 +20,6 @@
                 <label for="privacity">Area</label>
                 <select class="custom-select rounded-0" name="privacity" id="privacity">
                     <option >--Seleccionar--</option>
-                    <option value="all" >Todos</option>
                     @foreach ($areas as $area)
                         <option {{ $area->id == $challenge->area_id ? 'selected' : '' }} value="{{$area->id}}" >{{ $area->name . "-" . $area->description }}</option>
                     @endforeach
@@ -59,8 +58,8 @@
         </div>
     </div>
     
+    @include('includes.showUploads', ['model' => $challenge, 'disk' => 'challenge'])
     <div class="row" style="clear: both;margin-top: 18px;">
-        @include('includes.showUploads', ['model' => $challenge, 'disk' => 'challenge'])
         <label for="">*Nota: maximo puedes subir 4 archivos, 3 para material de apoyo y 1 para añadir preguntas que quieras adicionar*</label>
          <br/>
          @if (isset($uploads))

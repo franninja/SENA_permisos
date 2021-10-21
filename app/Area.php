@@ -8,7 +8,12 @@ class Area extends Model
 {
     protected $table = "areas";
 
+    // uno a muchos
     public function challenges(){
-        return $this->hasMany("App\Area");
+        return $this->hasMany("App\Challenge");
+    }
+
+    public function users(){
+        return $this->hasMany("App\User");
     }
 }

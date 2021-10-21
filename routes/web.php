@@ -26,9 +26,11 @@ Auth::routes();
 Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
-// home controller - dashboard
 // para obtener los uploads de cualquier modelo
-Route::get('/home/file/{disk}/{filename}', 'HomeController@getFile')->name('home.file');
+Route::get('/upload/file/{disk}/{filename}', 'UploadController@getFile')->name('upload.file');
+Route::get('/upload/delete/{disk}/{filename}', 'UploadController@deleteFile')->name('upload.delete');
+
+// home controller - dashboard
 Route::get('/home', 'HomeController@index')->name('home');
 
 // rutas usuarios
@@ -40,7 +42,9 @@ Route::resource('user', 'UserController')->except(['store', 'create']);
 Route::resource('roles', 'RoleController');
 
 // rutas desafios o Challenges
-Route::resource('challenge','ChallengeController');
+Route::post('challenge/changtestatus/{id}', 'ChallengeController@changteStatus')->name('challenge.changtestatus');
+Route::post('challenge/{id}', 'ChallengeController@update')->name('challenge.update');
+Route::resource('challenge','ChallengeController')->except(['update']);
 
 // rutas areas para los desafios
 Route::resource('area','AreasController');

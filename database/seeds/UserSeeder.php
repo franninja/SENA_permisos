@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'n_documento' => '1000246741',
+            'area_id' => 2,
             'name' => 'fran',
             'email' => 'fmcharris5@misena.edu.co',
             'password' => bcrypt('12345')
@@ -21,6 +22,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'n_documento' => '1000246744',
+            'area_id' => 1,
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345')

@@ -13,6 +13,10 @@ class AreaSeeder extends Seeder
     public function run()
     {
         Area::create([
+            'name' => 'general',
+            'description' => 'cualquier persona dentro de la plataforma puede verla'
+        ]);
+        Area::create([
             'name' => 'software',
             'description' => 'para areas especializadas en la industria 4.0 o de innovacion'
         ]);
@@ -21,7 +25,7 @@ class AreaSeeder extends Seeder
             'description' => 'para areas especializadas en las ventas y venta de productos por intenet'
         ]);
         Area::create([
-            'name' => 'constrccion',
+            'name' => 'construccion',
             'description' => 'para areas especializadas en la realizacion de estructuras y edificios'
         ]);
     }
