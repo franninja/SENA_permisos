@@ -345,23 +345,18 @@ return [
 
         [
             'text' => 'Crear Nueva Idea',
-            'route'  => 'idea.create',
-            'icon' => 'fas fa-plus',
-            // 'can' => 'roles.index',
-        ],
-        [
-            'text' => 'prueba de vista de desafios',
-            'route'  => 'idea.index',
+            'route'  => 'ideas.create',
             'icon' => 'fas fa-plus',
             // 'can' => 'roles.index',
         ],
         [
             'text' => 'Ideas Creadas',
-            'url'  => '#',
+            'route'  => 'ideas.index',
             'icon' => 'far fa-lightbulb',
             'icon_color' => 'warning',
             // 'can' => 'roles.index',
         ],
+
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',

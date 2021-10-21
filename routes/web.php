@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\controllers\DesafioController;
+use Illuminate\Http\controllers\IdeaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +46,9 @@ Route::resource('challenge','ChallengeController');
 Route::resource('area','AreasController');
 
 // rutas Idea
-Route::resource('idea','IdeaController');
+Route::resource('ideas','IdeaController');
+
+Route::resource('desafios' , 'DesafioController');
 
 
 

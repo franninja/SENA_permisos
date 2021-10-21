@@ -153,8 +153,10 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 @stop
 
 @section('js')
-    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     
 @stop
