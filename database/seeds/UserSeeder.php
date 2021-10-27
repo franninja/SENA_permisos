@@ -13,6 +13,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
+            'n_documento' => '1000246744',
+            'area_id' => 1,
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345')
+        ])->assignRole('admin');
+
+        
+        User::create([
             'n_documento' => '1000246741',
             'area_id' => 2,
             'name' => 'fran',
@@ -20,13 +29,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345')
         ]);
 
-        User::create([
-            'n_documento' => '1000246744',
-            'area_id' => 1,
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345')
-        ])->assignRole('admin');
 
         User::create([
             'n_documento' => '1000246745',

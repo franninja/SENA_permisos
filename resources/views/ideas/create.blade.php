@@ -14,8 +14,22 @@
                     <div class="card-body">
                             <div class="row">
                                     <div class="col">        
-                                        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Nombre de la Idea</label>
-                                        <input name="nombre" class="form-control" placeholder="Escribe el Nombre aquí">
+                                        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">nombre de la Idea</label>
+                                        <input name="name" class="form-control" placeholder="Escribe el name aquí">
+
+                                        <hr>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="challenge_id">challenge</label>
+                                                <select class="custom-select rounded-0" name="challenge_id" id="challenge_id">
+                                                    <option >--Seleccionar--</option>
+                                                    @foreach ($challenges as $challenge)
+                                                        <option {{ $challenge->id == $idea->challenge_id ? 'selected' : '' }} value="{{$challenge->id}}" >{{ $challenge->name . "-" . $challenge->description }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                 <hr>
                                         <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Descripción</label>
                                         <input name="descripcion" class="form-control" placeholder="Descripción de Idea aquí"></input>
@@ -30,7 +44,7 @@
 
                             </div>
 
-                            <div class="grid grid-cols-1 mt-5 mx-7">
+                            {{-- <div class="grid grid-cols-1 mt-5 mx-7">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Subir Documento</label>
 
                                 <div class='flex items-center justify-center w-full'>
@@ -45,13 +59,27 @@
                                     </label>
 
                                 </div>
-                            </div>  
+                            </div>   --}}
+
+                            {{-- @include('includes.showUploads', ['model' => $challenge, 'disk' => 'challenge']) --}}
+                            <div class="row" style="clear: both;margin-top: 18px;">
+                                <label for="">*Nota: maximo puedes subir 4 archivos, 3 para material de apoyo y 1 para añadir preguntas que quieras adicionar*</label>
+                                <br/>
+                                @if (isset($uploads))
+                                    <p>-puedes subir {{ $uploads ? 4 - count($uploads)  : '4' }}-</p>
+                                @else
+                                    <p>puedes subir 4 archivos</p>
+                                @endif
+                                <div class="col-12">
+                                    <div class="dropzone" id="myDropzone"></div>
+                                </div>
+                            </div>
                            
 
                                <hr>
                                <br>
                                <a href="{{ route('ideas.index') }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">Cancelar</a>
-                               <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">Guardar</button>
+                               <button id="submit-all" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">Guardar</button>
 
 
 
@@ -65,11 +93,12 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
 @stop
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
+{{-- <script>
     $(document).ready(function (e) {
         $('#archivo').change(function(){
             let reader = new FileReader();
@@ -81,6 +110,44 @@
 
     });
 
-</script>
+</script> --}}
 
+<script src="{{ asset('js/dropzone.js') }}"></script>
+    <script>
+        // var url = 'http://localhost/SENA_permisos/public/';
+        var url = 'http://localhost:8081/adsi/plataforma/public/';
+        Dropzone.options.myDropzone = {
+            url: "{{ route('ideas.store') }}",
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 4,
+            maxFiles: 4,
+            maxFileSize: 2,
+            acceptedFiles: "image/*,.pdf,.doc,.ppt,.docx,.txt",
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+
+            init: function () {
+
+                var submitButton = document.querySelector("#submit-all");
+                var wrapperThis = this;
+
+                submitButton.addEventListener("click", function () {
+                    wrapperThis.processQueue();
+                });
+
+
+                this.on('sendingmultiple', function (data, xhr, formData) {
+                    formData.append("name", $("#name").val());
+                    formData.append("challenge_id", $("#challenge_id").val());
+                    formData.append("description", $("#description").val());
+                });
+
+                // this.on('complete',function(){
+                //     window.location.href = "{{route('ideas.index')}}";
+                // });
+            }
+        };
+    </script>
 @stop

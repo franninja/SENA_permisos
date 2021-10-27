@@ -23,7 +23,7 @@ class CreateChallengesTable extends Migration
                 id bigint(20) primary key auto_increment not null,
                 area_id tinyint(255) not null,
                 user_id bigint(20) unsigned not null,
-                name varchar(255) not null,
+                name varchar(255) ,
                 description text not null,  
                 status varchar(15) null,
                 created_at TIMESTAMP NULL,

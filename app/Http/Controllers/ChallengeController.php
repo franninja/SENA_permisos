@@ -178,7 +178,7 @@ class ChallengeController extends Controller
         return true;
     }
 
-    public function changteStatus($id){
+    public function changeStatus($id){
         $challenge = Challenge::find($id);
         if($challenge->status == 'activo'){
             $challenge->status = 'inactivo';

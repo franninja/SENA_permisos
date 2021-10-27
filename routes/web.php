@@ -42,7 +42,7 @@ Route::resource('user', 'UserController')->except(['store', 'create']);
 Route::resource('roles', 'RoleController');
 
 // rutas desafios o Challenges
-Route::post('challenge/changtestatus/{id}', 'ChallengeController@changteStatus')->name('challenge.changtestatus');
+Route::post('challenge/changtestatus/{id}', 'ChallengeController@changeStatus')->name('challenge.changeStatus');
 Route::post('challenge/{id}', 'ChallengeController@update')->name('challenge.update');
 Route::resource('challenge','ChallengeController')->except(['update']);
 
@@ -51,8 +51,6 @@ Route::resource('area','AreasController');
 
 // rutas Idea
 Route::resource('ideas','IdeaController');
-
-Route::resource('desafios' , 'DesafioController');
 
 
 
