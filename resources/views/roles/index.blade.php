@@ -3,8 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <a href="{{ route('roles.create') }}" class="btn btn-secondary btn-sm float-right">Crear Role</a>
-    <h1>Lista de Roles</h1>
+    <a href="{{ route('roles.create') }}" class="btn btn-secondary btn-sm float-right">Crear Roles</a>
+    <h1 class="bg-gray-800 text-center">Lista de Roles</h1>
+    <br>
     @include('includes.message')
 @stop
 

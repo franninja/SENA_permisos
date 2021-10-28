@@ -50,7 +50,8 @@ Route::resource('challenge','ChallengeController')->except(['update']);
 Route::resource('area','AreasController');
 
 // rutas Idea
-Route::resource('ideas','IdeaController');
+Route::post('idea/{id}', 'IdeaController@update')->name('idea.update');
+Route::resource('ideas','IdeaController')->except(['update']);
 
 
 

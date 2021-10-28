@@ -21,7 +21,7 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="challenge_id">challenge</label>
+                                                <label for="challenge_id" class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Desafios Disponibles</label>
                                                 <select class="custom-select rounded-0" name="challenge_id" id="challenge_id">
                                                     <option >--Seleccionar--</option>
                                                     @foreach ($challenges as $challenge)
@@ -39,10 +39,10 @@
 
 
                             <!-- Cargar documento como vista previa -->
-                            <div class="grid grid-cols-1 mt-5 mx-7">
+                            {{-- <div class="grid grid-cols-1 mt-5 mx-7">
                                 <img id="archivoSeleccionado" style="max-height: 300px;">
 
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="grid grid-cols-1 mt-5 mx-7">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Subir Documento</label>
@@ -61,14 +61,14 @@
                                 </div>
                             </div>   --}}
 
-                            {{-- @include('includes.showUploads', ['model' => $challenge, 'disk' => 'challenge']) --}}
+                            @include('includes.showUploads', ['model' => $idea, 'disk' => 'idea'])
                             <div class="row" style="clear: both;margin-top: 18px;">
-                                <label for="">*Nota: maximo puedes subir 4 archivos, 3 para material de apoyo y 1 para añadir preguntas que quieras adicionar*</label>
+                                <label for="" class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Subir Documentos Máximo&nbsp</label>
                                 <br/>
                                 @if (isset($uploads))
                                     <p>-puedes subir {{ $uploads ? 4 - count($uploads)  : '4' }}-</p>
                                 @else
-                                    <p>puedes subir 4 archivos</p>
+                                    <p class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">puedes subir 4 archivos:</p>
                                 @endif
                                 <div class="col-12">
                                     <div class="dropzone" id="myDropzone"></div>
@@ -144,9 +144,9 @@
                     formData.append("description", $("#description").val());
                 });
 
-                // this.on('complete',function(){
-                //     window.location.href = "{{route('ideas.index')}}";
-                // });
+                this.on('complete',function(){
+                    window.location.href = "{{route('ideas.index')}}";
+                });
             }
         };
     </script>

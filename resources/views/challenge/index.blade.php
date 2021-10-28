@@ -4,7 +4,8 @@
 
 @section('content_header')
 <a href="{{ route('challenge.create') }}" class="btn btn-secondary btn-sm float-right">Crear Desafio</a>
-<h1>Lista de Desafios</h1>
+<h1 class="bg-gray-800 text-center">Lista de Desafios</h1>
+<br>
 @include('includes.message')
 @stop
 
@@ -81,13 +82,13 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Desafio</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                Estas Seguro de Eliminar el Desafio({{$challenge->name}}) y todas su informacion e ideas relacionadas?
+                Estas Seguro de Eliminar el Desafio ({{$challenge->name}}) y todas su informacion e ideas relacionadas?
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancelar</button>

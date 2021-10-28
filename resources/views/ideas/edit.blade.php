@@ -53,7 +53,7 @@
                                <hr>
                                <br>
                                <a href="{{ route('ideas.index') }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">Cancelar</a>
-                               <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">Guardar</button>
+                               <button type="submit" id="submit-all" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">Guardar</button>
 
 
 
@@ -84,6 +84,47 @@
 
     });
 
+</script>
+
+{{-- Estructura drz --}}
+<script src="{{ asset('js/dropzone.js') }}"></script>
+<script>
+    var url = 'http://localhost/SENA_permisos/public/';
+    // var url = 'http://localhost:8081/adsi/plataforma/public/';
+    Dropzone.options.myDropzone = {
+        url: "{{ route('ideas.update', $idea->id) }}",
+        // method: "PATCH",
+        autoProcessQueue: false,
+        uploadMultiple: true,
+        parallelUploads: 4,
+        maxFiles: {{ 4 - count($uploads) }},
+        maxFileSize: 2,
+        acceptedFiles: "image/*,.pdf,.doc,.ppt,.docx,.txt",
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+
+        init: function () {
+
+            var submitButton = document.querySelector("#submit-all");
+            var wrapperThis = this;
+
+            submitButton.addEventListener("click", function () {
+                wrapperThis.processQueue();
+            });
+
+
+            this.on('sendingmultiple', function (data, xhr, formData) {
+                formData.append("name", $("#name").val());
+                formData.append("description", $("#description").val());
+
+            });
+
+            this.on('complete',function(){
+                window.location.href = "{{route('ideas.index')}}";
+            });
+        }
+    };
 </script>
 
 @stop

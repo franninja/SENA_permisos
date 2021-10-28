@@ -6,6 +6,7 @@ use App\Challenge;
 use App\Idea;
 use App\Upload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,8 +46,6 @@ class IdeaController extends Controller
     public function store(Request $request)
     {
 
-        dump($request);
-        die();
         
         $user = auth()->user();
         $id = $user->id;
@@ -57,20 +56,20 @@ class IdeaController extends Controller
         ]);
 
 
+        $files = $request->file('file');
         
         $name = $request->input("name");
         $challenge_id = $request->input("challenge_id");
         $description = $request->input("description");
         
-        $idea = new Challenge();
+        $idea = new Idea();
+        $idea->challenge_id = $challenge_id;
         $idea->user_id = $id;
         $idea->name = $name;
-        $idea->challenge_id = $challenge_id;
         $idea->description = $description;
         
         $idea->save();
         
-        $files = $request->file('file');
         
         if($files){
 
@@ -88,7 +87,7 @@ class IdeaController extends Controller
             }
         }
 
-        return redirect()->route('ideas.index');
+        return true;
     }
 
     /**
@@ -147,8 +146,19 @@ class IdeaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Idea $idea)
+    public function destroy($id)
     {
+        $idea = Idea::find($id);
+
+        $uploads = $idea->uploads;
+
+        foreach($uploads as $upload){
+            // eliminar del storage
+            Storage::disk('idea')->delete($upload->path);
+            // eliminar de la db
+            $upload->delete();
+        }
+
         $idea->delete();
         return redirect()->route('ideas.index');
 

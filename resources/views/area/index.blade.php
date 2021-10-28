@@ -4,8 +4,8 @@
 
 @section('content_header')
     <a href="{{ route('area.create') }}" class="btn btn-secondary btn-sm float-right">Crear Area</a>
-    <h1>Lista de Areas Creadas</h1>
-    <hr>
+    <h1 class="bg-gray-800 text-center">Lista de Areas Creadas</h1>
+    <br>
     @include('includes.message')
 @stop
 

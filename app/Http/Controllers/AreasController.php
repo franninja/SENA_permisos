@@ -135,7 +135,7 @@ class AreasController extends Controller
         $area->delete();
 
         return redirect()->route("area.index")->with([
-            "message" => "eliminado exitosamente"
+            "message" => "Area eliminada exitosamente"
         ]);
     }
 }

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Lista de usuarios</h1>
+    <h1 class="bg-gray-800 text-center">Lista de usuarios</h1>
     @include('includes.message')
 @stop
 
