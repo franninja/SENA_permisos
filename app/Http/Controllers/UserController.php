@@ -162,6 +162,6 @@ class UserController extends Controller
 
         $user->roles()->sync($roles);
 
-        return redirect()->route('user.role', ['user' => $user])->with('message', 'roles asignados');
+        return redirect()->route('user.index', ['user' => $user])->with('message', 'rol asignado');
     }
 }
