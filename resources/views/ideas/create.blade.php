@@ -118,6 +118,7 @@
         var url = 'http://localhost:8081/adsi/plataforma/public/';
         Dropzone.options.myDropzone = {
             url: "{{ route('ideas.store') }}",
+            dictDefaultMessage: "Arrastre Sus Documentos aquí",
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 4,

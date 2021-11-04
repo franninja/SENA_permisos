@@ -92,6 +92,7 @@
     var url = 'http://localhost/SENA_permisos/public/';
     // var url = 'http://localhost:8081/adsi/plataforma/public/';
     Dropzone.options.myDropzone = {
+        dictDefaultMessage: "Arrastre sus Documentos Aquí",
         url: "{{ route('ideas.update', $idea->id) }}",
         // method: "PATCH",
         autoProcessQueue: false,
