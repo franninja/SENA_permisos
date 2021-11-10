@@ -8,17 +8,20 @@
 
 @section('content')
 <div class="container-fluid">
-      <a type="button" href="{{ route('ideas.create') }}" class="bg-indigo-500 px-12 py-2 rounded text-gray-200 font-semibold hover:bg-indigo-1000 transition duration-200 each-in-out">Crear IDEA</a>
-
+      <a type="button" href="{{ route('ideas.create') }}" class="bg-gray-500 px-12 py-2 rounded text-gray-200 font-semibold hover:bg-indigo-1000 transition duration-200 each-in-out">Crear IDEA</a>
+      <br><br>
+      
  <!-- prueba para apartado de ideas -->
 
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
+        
     @foreach ($ideas as $idea)
+    
         <div class="col">
 
                 <div class="card border h-100">
-                    <img src="{{ asset('img/images.jpg') }}" class="card-img-top" alt="Imagen no Disponible">
+                    <img src="{{ asset('img/images1.jpg') }}" class="card-img-top" alt="Imagen no Disponible">
 
                     <div class="card-body">
                         <h5 class="card-title"><b>{{$idea->nombre}}</b></h5>
@@ -48,6 +51,7 @@
 
                 </div>
         </div>
+       
     @endforeach
     </div>
 
