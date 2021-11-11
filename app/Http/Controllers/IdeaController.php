@@ -119,24 +119,61 @@ class IdeaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Idea $idea)
+    public function update(Request $request, Idea $idea, $id)
     {
-        $request->validate([
-            'nombre' => 'required', 'descripcion' => 'required'
+        // $request->validate([
+        //     'nombre' => 'required', 'descripcion' => 'required'
+        // ]);
+
+        // $idea2 = $request->all();
+        
+        // if($archivo = $request->file('archivo')){
+        //     $rutaGuardarArchivo = 'archivo/';
+        //     $archivoIdea = date('YmdHis'). "." . $archivo->getClientOriginalExtension();
+        //     $archivo->move($rutaGuardarArchivo, $archivoIdea);
+        //     $idea2['archivo'] = "$archivoIdea";
+        // }else{
+        //     unset($idea2['archivo']);
+        // }
+        // $idea->update($idea2);
+        // return redirect()->route('ideas.index');
+
+        // aca va a ir lo que voy a actualizar
+
+        $validate = $this->validate($request, [
+            "name" => ["required", "string", "max:250"],
+            "description" => ["required"],
         ]);
 
-         $idea2 = $request->all();
+
+        $files = $request->file('archivo');
+
+        $idea = Idea::find($id);
+        $idea->name = $request->input("name");
+        $idea->description = $request->input("description");
+
+        $idea->update();
+
         
-        if($archivo = $request->file('archivo')){
-            $rutaGuardarArchivo = 'archivo/';
-            $archivoIdea = date('YmdHis'). "." . $archivo->getClientOriginalExtension();
-            $archivo->move($rutaGuardarArchivo, $archivoIdea);
-            $idea2['archivo'] = "$archivoIdea";
-        }else{
-            unset($idea2['archivo']);
+        if($files){
+
+            foreach($files as $file){
+                //poner un nombre unico a la imagen subida
+                $image_path_name = time().$file->getClientOriginalName();
+                //guardarlo en el disco de imagenes
+                Storage::disk('idea')->put($image_path_name, File::get($file));
+                //seterar el image_path el nombre unico
+
+                // para el tema de los uploads
+                $uploads = new Upload(["path" => $image_path_name]);
+                $idea->uploads()->save($uploads);
+                // $challenge->uploads()->save();
+            }
         }
-        $idea->update($idea2);
-        return redirect()->route('ideas.index');
+
+
+
+        return true;
         
     }
 

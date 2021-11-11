@@ -13,26 +13,28 @@
                 @csrf
                     <div class="card-body">
                             <div class="row">
-                                    <div class="col">        
+                                    <div class="col-md-6">        
                                         <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">nombre de la Idea</label>
-                                        <input name="name" class="form-control" placeholder="Escribe el name aquí">
+                                        <input id="name" name="name" class="form-control" placeholder="Escribe el nombre aquí">
+                                    </div>
+                                        
 
                                         <hr>
 
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="challenge_id" class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Desafios Disponibles</label>
-                                                <select class="custom-select rounded-0" name="challenge_id" id="challenge_id">
-                                                    <option >--Seleccionar--</option>
-                                                    @foreach ($challenges as $challenge)
-                                                        <option {{ $challenge->id == $idea->challenge_id ? 'selected' : '' }} value="{{$challenge->id}}" >{{ $challenge->name . "-" . $challenge->description }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="challenge_id" class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Desafios Disponibles</label>
+                                            <select class="custom-select rounded-0" name="challenge_id" id="challenge_id">
+                                                <option >--Seleccionar--</option>
+                                                @foreach ($challenges as $challenge)
+                                                    <option {{ $challenge->id == $idea->challenge_id ? 'selected' : '' }} value="{{$challenge->id}}" >{{ $challenge->name . "-" . $challenge->description }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                    </div>
                 <hr>
                                         <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold mb-1">Descripción</label>
-                                        <input name="descripcion" class="form-control" placeholder="Descripción de Idea aquí"></input>
+                                        <input name="description" class="form-control" placeholder="Descripción de la Idea aquí"></input>
                                                                                 
                                     </div>                      
                             </div>
@@ -114,11 +116,11 @@
 
 <script src="{{ asset('js/dropzone.js') }}"></script>
     <script>
-        // var url = 'http://localhost/SENA_permisos/public/';
-        var url = 'http://localhost:8081/adsi/plataforma/public/';
+        var url = 'http://localhost/SENA_permisos/public/';
+        // var url = 'http://localhost:8081/adsi/plataforma/public/';
         Dropzone.options.myDropzone = {
             url: "{{ route('ideas.store') }}",
-            dictDefaultMessage: "Arrastre Sus Documentos aquí",
+            dictDefaultMessage: "Arrastré Sus Documentos aquí",
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 4,

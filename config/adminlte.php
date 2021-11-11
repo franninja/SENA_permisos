@@ -296,6 +296,7 @@ return [
             'route'  => 'user.index',
             'icon' => 'fas fa-fw fa-users',
             'can' => 'user.index',
+            'icon_color' => 'orange'
         ],
         ['header' => 'AREAS',
         //  'can' => 'roles.index'
@@ -304,12 +305,14 @@ return [
             'text' => 'Lista de Areas',
             'route'  => 'area.index',
             'icon' => 'fas fa-fw fa-users-cog',
+            'icon_color' => 'orange'
             // 'can' => 'roles.index',
         ],
         [
             'text' => 'Crear Nueva Area',
             'route'  => 'area.create',
             'icon' => 'fas fa-plus',
+            'icon_color' => 'orange'
             // 'can' => 'roles.index',
         ],
         ['header' => 'ROLES Y PERMISOS',
@@ -320,35 +323,33 @@ return [
             'route'  => 'roles.index',
             'icon' => 'fas fa-fw fa-users-cog',
             'can' => 'roles.index',
+            'icon_color' => 'orange'
         ],
         [
             'text' => 'Crear Rol Nuevo',
             'route'  => 'roles.create',
             'icon' => 'fas fa-plus',
             'can' => 'roles.index',
+            'icon_color' => 'orange'
         ],
         ['header' => 'DESAFIOS'],
         [
             'text' => 'Lista de Desafios',
             'route'  => 'challenge.index',
             'icon' => 'fas fa-dumbbell',
+            'icon_color' => 'orange'
             // 'can' => 'roles.index',
         ],
         [
             'text' => 'Crear Nuevo Desafio',
             'route'  => 'challenge.create',
             'icon' => 'fas fa-plus',
+            'icon_color' => 'orange'
             // 'can' => 'roles.index',
         ],
 
         ['header' => 'IDEAS'],
 
-        [
-            'text' => 'Crear Nueva Idea',
-            'route'  => 'ideas.create',
-            'icon' => 'fas fa-plus',
-            // 'can' => 'roles.index',
-        ],
         [
             'text' => 'Ideas Creadas',
             'route'  => 'ideas.index',
@@ -356,7 +357,15 @@ return [
             'icon_color' => 'warning',
             // 'can' => 'roles.index',
         ],
-
+        
+        [
+            'text' => 'Crear Nueva Idea',
+            'route'  => 'ideas.create',
+            'icon' => 'fas fa-plus',
+            'icon_color' => 'orange'
+            // 'can' => 'roles.index',
+        ],
+        
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',
